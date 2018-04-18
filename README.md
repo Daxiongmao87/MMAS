@@ -21,9 +21,9 @@ To Run:
 	2. To run the server at the root directory, you should be able to type 'flask run'
 
 TODO:
-	- (DONE)Webserver 
-	- (WIP)	Database schema once we figured out how we will be organizing the data
-	- (WIP)	Backend calculations for desired analytics and statistics
-	- (WIP)	Webpage to display analytics and statistics
+	- Webserver :heavy_check_mark:
+	- Database schema once we figured out how we will be organizing the data
+	- Backend calculations for desired analytics and statistics
+	- Webpage to display analytics and statistics
 
 
