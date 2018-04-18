@@ -16,6 +16,7 @@ INSTRUCTIONS
 	
 	
 To Run:
+
 	1. While in the virtual environment, type 'set FLASK_APP=mmas' (or if in linux: 'export FLASK_APP=mmas')
 	2. To run the server at the root directory, you should be able to type 'flask run'
 
