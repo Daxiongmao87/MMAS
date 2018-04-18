@@ -18,7 +18,7 @@ mmas.py is the main application script, this is where most of the code will be.
 1. While in the virtual environment, type 'set FLASK_APP=mmas' (or if in linux: 'export FLASK_APP=mmas')
 2. To run the server at the root directory, you should be able to type 'flask run'
 
-TODO:
+**TODO**
 
  - Webserver  :heavy_check_mark:
  - Database schema once we figured out how we will be organizing the data :construction:
