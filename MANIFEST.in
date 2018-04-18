@@ -1,0 +1,3 @@
+graft mmas/templates
+graft mmas/static
+include mmas/schema.sql

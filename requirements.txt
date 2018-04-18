@@ -1,0 +1,7 @@
+click==6.7
+Flask==0.12.2
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+-e git+https://github.com/Daxiongmao87/MMAS.git@971d01e20ed2ea7dcf3ed07dd09009c72a47b357#egg=mmas
+Werkzeug==0.14.1

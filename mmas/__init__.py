@@ -1,0 +1,1 @@
+from .mmas import app
