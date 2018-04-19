@@ -1,7 +1,7 @@
 
 # Movie Meta-Analytics and Statistics (MMAS)
 
-A webpage that analyzes interesting and most prboably useless info from Rotten Tomatoes and IMDB.
+A webpage that analyzes interesting and most probably useless info from Rotten Tomatoes and IMDB.
 
 mmas.py is the main application script, this is where most of the code will be.
 
