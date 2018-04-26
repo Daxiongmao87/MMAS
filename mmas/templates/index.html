@@ -16,17 +16,22 @@
 	</head>
 	<body>
 		<div class="container-fluid">	
+			{% for entry in entries %}
 			<div class="row">
-				<div class="col-md-4">
-					Sample Stat 1
-				</div>
-				<div class="col-md-4">
-					Sample Stat 2
-				</div>
-				<div class="col-md-4">
-					Sample Stat 3
-				</div>
+        <h5>{{entries_name[loop.index0]}}</h5>
+				<table>
+          {% set num_rows = entries_rows[loop.index0] %}
+          <h3>Test: {{num_rows}}</h3>
+          {% for i in range(num_rows) %}
+          <tr>
+            <td>Test</td>
+          </tr>
+          {% endfor%}
+        </table>
 			</div>
+			{% endfor %} 
+			<div class="row">
+				<div class
 		</div>
 	</body>
 </html>
