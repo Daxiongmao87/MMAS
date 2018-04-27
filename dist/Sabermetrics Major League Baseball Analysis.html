@@ -11,7 +11,13 @@
 
 	<link rel="stylesheet" href="./Sabermetrics Major League Baseball Analysis_files/bs4.css">
 	<script src="./Sabermetrics Major League Baseball Analysis_files/bootstrap.bundle.min.js.download"></script>
-	
+	<style>
+    sub {
+      vertical-align: sub;
+      font-size: smaller;
+      font-family: monospace;
+    }
+	</style>
 	<title>Sabermetrics Major League Baseball Analysis</title>
 	</head>
 	<body>
@@ -29,6 +35,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Since 1871, what qualified batter has had the most hits?</h3>
+              <sub>select batting.player_id, max(batting.h), batting.ab, batting.team_id, batting.year from batting where batting.ab &gt; 501 and batting.ab &lt; 2000</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -77,6 +84,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Comparison of the number of hitters with more than 150 hits in a season based on two opposite home parks: Hitter-friendly Coor's Field(Colorado) and Pitcher-friendly AT&amp;T Park (San Francisco).</h3>
+              <sub>select batting.player_id, batting.h, batting.team_id, batting.year from batting where batting.h &gt; 150 and batting.team_id = 'COL' and batting.year &gt;= 1995 union select batting.player_id, batting.h, batting.team_id, batting.year from batting where batting.h &gt; 150 and batting.team_id = 'SFN' and batting.year &gt;= 1995 order by batting.h desc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -1395,6 +1403,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Comparison of pitching statistics based upon the players home park being either the most hitter friendly or the most pitcher friendly (in the NL), based on MLB's adjusted park factors.</h3>
+              <sub>select pitching.player_id, pitching.r, pitching.er, pitching.era, pitching.h, pitching.hr, pitching.w, pitching.year, pitching.team_id from pitching where pitching.era &lt;= 3.00 and pitching.year &gt;= 1995 and pitching.gs &gt;= 30 and pitching.team_id = 'COL' union select pitching.player_id, pitching.r, pitching.er, pitching.era, pitching.h, pitching.hr, pitching.w, pitching.year, pitching.team_id from pitching where pitching.era &lt;= 3.00 and pitching.year &gt;= 1995 and pitching.gs &gt;= 30 and pitching.team_id = 'SFN' order by pitching.era asc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -1666,6 +1675,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Query to find the number of wins by Colorado and San Francisco in each season since 1995 (When Coor's field opened). Does playing in a hitter-friendly or pitcher-friendly park have a large impact on total wins?</h3>
+              <sub>select team.team_id, team.w, team.year from team where team.year &gt;= 1995 and (team.team_id = 'COL' or team.team_id = 'SFN') order by team.w desc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -2157,6 +2167,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Query of players with more than 30 home runs, filtered by American League and home field being Hitter Friendly or Pitcher Friendly - according to MLN's adjusted park factors.</h3>
+              <sub>select batting.player_id, batting.hr, batting.team_id, batting.year from batting where batting.hr &gt;= 30  and batting.year &gt;= 1995 and (batting.team_id = 'KCA' or batting.team_id = 'BOS') order by batting.hr asc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -4320,6 +4331,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Query to determine whether or not fielding percentage is affected by playing for a northeastern team in an outdoor park(snow, rain, etc) versus playing for a southern team inside a dome.</h3>
+              <sub>select fielding.player_id, fielding.team_id, fielding.g, fielding.year, fielding.pos, fielding.e, fielding.a from fielding where fielding.a &gt;= 150 and fielding.e &gt; 1 and fielding.year &gt;= 1995 and fielding.g &gt;= 100 and (fielding.team_id = 'NYA' or fielding.team_id = 'MIA') order by fielding.e desc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -6295,6 +6307,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Query to search for all star players with a salary of more than $20 million. Are more expensive players always better?</h3>
+              <sub>select all_star.player_id, all_star.team_id, all_star.year, salary.salary from ((all_star inner join salary on all_star.player_id = salary.player_id)) where all_star.year &gt;= 2010 and salary.salary &gt; 20000000 order by salary.salary desc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -9407,6 +9420,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Query to find the number of all stars paid less than $1 million, which is generally going to be younger players offered the league minimum before they are eligible for artibration.</h3>
+              <sub>select all_star.player_id, all_star.team_id, all_star.year, salary.salary from ((all_star inner join salary on all_star.player_id = salary.player_id)) where all_star.year &gt;= 2005 and salary.salary &lt; 1000000 order by salary.salary asc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -38129,6 +38143,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Query to find the pitching statistics of former LSU baseball players, sorted by ERA</h3>
+              <sub>select pitching.player_id, pitching.year, player_college.player_id, pitching.era, pitching.g from ((pitching inner join player_college on pitching.player_id = player_college.player_id)) where player_college.college_id = 'lsu' and pitching.era &lt; 3.00 and pitching.g &gt; 2 order by pitching.era asc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
@@ -39422,6 +39437,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>Query to compare the statistics of Cy Young Award finalists and winners since 2010. Is there an easily-identifiable and direct correlation between any of the particular fields?</h3>
+              <sub>select distinct pitching.player_id, pitching.era, pitching.r, pitching.er, pitching.w, pitching.gs, pitching.cg, pitching.hr, pitching.so, pitching.sho, pitching.bb, pitching.team_id, pitching.league_id, pitching.year, player_award.award_id from ((pitching inner join player_award on pitching.player_id = player_award.player_id)) where pitching.year &gt;= 2010 and player_award.award_id = 'Cy Young Award' order by pitching.era asc</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">

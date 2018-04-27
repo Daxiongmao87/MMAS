@@ -74,7 +74,8 @@ def main():
             entries_rows=entries_rows,
             entries_columns=entries_columns,
             entries_name=entries_name,
-            entries_column_names=entries_column_names
+            entries_column_names=entries_column_names,
+            sql_entries=sql_entries
             )
 
 def connect_db():

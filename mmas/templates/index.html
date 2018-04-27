@@ -11,7 +11,13 @@
 
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/bs4.css') }}" />
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
-	
+	<style>
+    sub {
+      vertical-align: sub;
+      font-size: smaller;
+      font-family: monospace;
+    }
+	</style>
 	<title>Sabermetrics Major League Baseball Analysis</title>
 	</head>
 	<body>
@@ -29,6 +35,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3>{{entries_name[loop.index0]}}</h3>
+              <sub>{{sql_entries[loop.index0]}}</sub>
             </div>
             <div class="panel-body">
               <table align="center" class="data_table">
