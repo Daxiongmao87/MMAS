@@ -46,21 +46,35 @@ def main():
     entries=[]
     entries_rows=[]
     entries_columns=[]
-
+    entries_column_names=[]
     for i in range(0,len(sql_entries)):
         cur = db.execute(sql_entries[i])
-        entries.append(cur.fetchall())
-        entries_rows.append(cur.rowcount)
+        table=[]
+        table_column_names=[]
+        table.append(cur.fetchall())
+        entries.append(table[0])
+        row_count = 0;
         cur = db.execute(sql_entries[i])
-        entries_columns.append(len(cur.fetchall()))
-        print(entries_columns[i])
-        
+        for row in cur:
+          row_count += 1
+          #print(table)
+        entries_rows.append(row_count)
+        cur = db.execute(sql_entries[i])
+        column_count = 0;
+        for row in cur.description:
+          table_column_names.append(row[0])
+          column_count += 1
+        entries_column_names.append(table_column_names)
+        entries_columns.append(column_count)
+        #print('{0} , {1}'.format(entries_columns[i], entries_rows[i]))
+    print('TOTAL: Row_index: {0} Column_index: {1}'.format(len(entries_columns), len(entries_rows)))
     return render_template(
             "index.html",
             entries=entries,
             entries_rows=entries_rows,
             entries_columns=entries_columns,
-            entries_name=entries_name
+            entries_name=entries_name,
+            entries_column_names=entries_column_names
             )
 
 def connect_db():

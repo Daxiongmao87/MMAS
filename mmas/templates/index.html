@@ -12,26 +12,50 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles/bs4.css') }}" />
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
 	
-	<title>Movie Meta Analytics and Statistics</title>
+	<title>Sabermetrics Major League Baseball Analysis</title>
 	</head>
 	<body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Sabermetrics Major League Baseball Analysis</a>
+        </div>
+      </div>
+    </nav>
 		<div class="container-fluid">	
 			{% for entry in entries %}
 			<div class="row">
-        <h5>{{entries_name[loop.index0]}}</h5>
-				<table>
-          {% set num_rows = entries_rows[loop.index0] %}
-          <h3>Test: {{num_rows}}</h3>
-          {% for i in range(num_rows) %}
-          <tr>
-            <td>Test</td>
-          </tr>
-          {% endfor%}
-        </table>
+        <div class="col-md-offset-1 col-md-10">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>{{entries_name[loop.index0]}}</h3>
+            </div>
+            <div class="panel-body">
+              <table align="center" class="data_table">
+                {% set index = loop.index0 %}
+                <thead>
+                  <tr>
+                    {% for i in range(entries_columns[index]) %}
+                    <td class="data_column_name" style="padding: 5px 10px 5px 5px;"><h4>{{entries_column_names[index][loop.index0]}}</h4></td>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in range(entries_rows[index]) %}
+                  {% set row = loop.index0 %}
+                  <tr class="data_row">
+                    {% for j in range(entries_columns[index]) %}
+                    <td class="data_cell" style="padding: 5px 10px 5px 5px;">{{entries[index][row][loop.index0]}}</td>
+                    {% endfor%}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 			</div>
 			{% endfor %} 
-			<div class="row">
-				<div class
 		</div>
 	</body>
 </html>
