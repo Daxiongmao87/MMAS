@@ -5,8 +5,13 @@
 mmas.py is the main application script, this is where most of the code will be.
 
 **INSTRUCTIONS**
-1. Install python 2.7 (https://www.python.org/)
-2. Open command promprt (or terminal) and install virtualenv from pip: 'python -m pip install virtualenv'
+1. Install python 2.7 (https://www.python.org/).  After installation on Windows, you may need to set your environment variables.  To do this:
+	a. type "Environment Variables" in your search bar and select "Edit environment variables for your account" (Windows 10)
+	b. Select the variable "Path" and click "Edit"
+	c. Click "New" and add the path to your python folder (default: "C:\Python27\")
+	d. Click on "New" again, and add the path to your pyhon scripts folder (default: "C:\Python27\Scripts\")
+	e. Then click "OK" and "OK" to apply your changes and exit out.
+2. Open command prompt (or terminal) and install virtualenv from pip: 'python -m pip install virtualenv'
 3. Navigate to your project folder and create a virtual environment: 'virtualenv'
 4. Next you'll want to be in the python virtual environment, so navigate to venv/Scripts/activate.bat (or if iin linux, ./venv/Scripts/activate
 5. In the root directory, type 'pip install --editable .'
