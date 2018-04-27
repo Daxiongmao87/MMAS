@@ -1,7 +1,8 @@
 
-# Movie Meta-Analytics and Statistics (MMAS)
+# Sabermetrics Major League Basebball Analysis
+(Formerly) Movie Meta-Analytics and Statistics (MMAS)
 
-A webpage that analyzes interesting and most probably useless info from Rotten Tomatoes and IMDB.
+**NOTICE (Instructions are not complete and will not work as written)**
 
 mmas.py is the main application script, this is where most of the code will be.
 
